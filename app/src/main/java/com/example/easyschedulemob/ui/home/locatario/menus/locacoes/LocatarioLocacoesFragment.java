@@ -1,4 +1,4 @@
-package com.example.easyschedulemob.ui.home.locatario.ui.dashboard;
+package com.example.easyschedulemob.ui.home.locatario.menus.locacoes;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.easyschedulemob.databinding.FragmentDashboardBinding;
+import com.example.easyschedulemob.databinding.FragmentLocacoesLocatarioBinding;
 
-public class DashboardFragment extends Fragment {
 
-    private FragmentDashboardBinding binding;
+public class LocatarioLocacoesFragment extends Fragment {
+
+    private FragmentLocacoesLocatarioBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        LocatarioLocacoesViewModel locatarioLocacoesViewModel =
+                new ViewModelProvider(this).get(LocatarioLocacoesViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentLocacoesLocatarioBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        locatarioLocacoesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

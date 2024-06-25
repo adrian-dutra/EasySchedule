@@ -58,7 +58,7 @@
     <string name="title_locacoes">Locações</string>
     <string name="title_notifications_locador">Notificações</string>
     <string name="title_activity_locatario">LocatarioActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_quadras_locatario">Quadras</string>
+    <string name="title_locacoes_locatario">Locações</string>
+    <string name="title_notifications">Notificações</string>
 </resources>

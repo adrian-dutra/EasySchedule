@@ -1,4 +1,4 @@
-package com.example.easyschedulemob.ui.home.locatario.ui.home;
+package com.example.easyschedulemob.ui.home.locatario.menus.quadras;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,21 +11,22 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.easyschedulemob.databinding.FragmentHomeBinding;
+import com.example.easyschedulemob.databinding.FragmentQuadrasLocatarioBinding;
 
-public class HomeFragment extends Fragment {
+public class LocatarioQuadrasFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentQuadrasLocatarioBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        LocatarioViewModel locatarioViewModel =
+                new ViewModelProvider(this).get(LocatarioViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentQuadrasLocatarioBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        locatarioViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

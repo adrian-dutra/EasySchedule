@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation2"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_locatario">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.easyschedulemob.ui.home.locatario.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_locatario"
+        android:name="com.example.easyschedulemob.ui.home.locatario.menus.quadras.LocatarioQuadrasFragment"
+        android:label="@string/title_quadras_locatario"
+        tools:layout="@layout/fragment_quadras_locatario" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.easyschedulemob.ui.home.locatario.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_locacoes_locatario"
+        android:name="com.example.easyschedulemob.ui.home.locatario.menus.locacoes.LocatarioLocacoesFragment"
+        android:label="@string/title_locacoes_locatario"
+        tools:layout="@layout/fragment_locacoes_locatario" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.easyschedulemob.ui.home.locatario.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_notifications_locatario"
+        android:name="com.example.easyschedulemob.ui.home.locatario.menus.notifications.NotificationsLocatarioFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notifications_locatario" />
 </navigation>

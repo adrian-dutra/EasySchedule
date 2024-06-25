@@ -1,14 +1,14 @@
-package com.example.easyschedulemob.ui.home.locatario.ui.home;
+package com.example.easyschedulemob.ui.home.locatario.menus.quadras;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class LocatarioViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public LocatarioViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }

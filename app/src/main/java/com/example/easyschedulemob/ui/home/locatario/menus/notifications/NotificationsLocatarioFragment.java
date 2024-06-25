@@ -1,4 +1,4 @@
-package com.example.easyschedulemob.ui.home.locatario.ui.notifications;
+package com.example.easyschedulemob.ui.home.locatario.menus.notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,20 +12,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.easyschedulemob.databinding.FragmentNotificationsBinding;
 
-public class NotificationsFragment extends Fragment {
+public class NotificationsLocatarioFragment extends Fragment {
 
-    private FragmentNotificationsBinding binding;
+    private com.example.easyschedulemob.databinding.FragmentNotificationsLocatarioBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        NotificationsViewModel notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+        NotificationsLocatarioViewModel notificationsLocatarioViewModel =
+                new ViewModelProvider(this).get(NotificationsLocatarioViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = com.example.easyschedulemob.databinding.FragmentNotificationsLocatarioBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        notificationsLocatarioViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
