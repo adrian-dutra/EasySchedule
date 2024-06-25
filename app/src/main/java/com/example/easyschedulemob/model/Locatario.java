@@ -1,8 +1,12 @@
 package com.example.easyschedulemob.model;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-@Entity
+@Entity(foreignKeys = @ForeignKey(entity = Usuario.class,
+        parentColumns = "id",
+        childColumns = "userId",
+        onDelete = ForeignKey.CASCADE))
 public class Locatario extends Usuario{
     @PrimaryKey(autoGenerate = true)
     int id;

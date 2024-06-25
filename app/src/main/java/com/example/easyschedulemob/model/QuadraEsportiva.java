@@ -4,24 +4,25 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = @ForeignKey(entity = Locador.class,
-        parentColumns = "id",
-        childColumns = "locadorId",
-        onDelete = ForeignKey.CASCADE))
+@Entity(tableName = "quadraesportiva",
+        foreignKeys = @ForeignKey(entity = Locador.class,
+                parentColumns = "id",
+                childColumns = "locadorId",
+                onDelete = ForeignKey.CASCADE))
 public class QuadraEsportiva {
     @PrimaryKey(autoGenerate = true)
     int id;
     String nome;
     String tipo;
     Double precoPorHora;
-    Locador dono;
+    int locadorId;
     int disponivel;
-    public QuadraEsportiva(String nome, String tipo, double precoPorHora, int disponivel, Locador dono) {
+    public QuadraEsportiva(String nome, String tipo, double precoPorHora, int disponivel, int locadorId) {
         this.nome = nome;
         this.tipo = tipo;
         this.precoPorHora = precoPorHora;
         this.disponivel = 1;
-        this.dono = dono;
+        this.locadorId = locadorId;
     }
 
     public int getId() {
@@ -54,12 +55,8 @@ public class QuadraEsportiva {
         this.precoPorHora = precoPorHora;
     }
 
-    public Locador getDono() {
-        return dono;
-    }
-    public void setDono(Locador dono) {
-        this.dono = dono;
-    }
+    public int getLocadorId() { return locadorId; }
+    public void setLocadorId(int locadorId) { this.locadorId = locadorId; }
     public int isDisponivel() {
         return disponivel;
     }

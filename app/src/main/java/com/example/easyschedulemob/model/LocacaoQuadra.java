@@ -12,13 +12,13 @@ import java.time.LocalDateTime;
                 @ForeignKey(
                         entity = QuadraEsportiva.class,
                         parentColumns = "id",
-                        childColumns = "id",
+                        childColumns = "quadraId",
                         onDelete = ForeignKey.CASCADE
                 ),
                 @ForeignKey(
                         entity = Locatario.class,
                         parentColumns = "id",
-                        childColumns = "id",
+                        childColumns = "locatarioId",
                         onDelete = ForeignKey.CASCADE
                 )
         }
@@ -26,19 +26,19 @@ import java.time.LocalDateTime;
 public class LocacaoQuadra {
     @PrimaryKey(autoGenerate = true)
     int id;
-    QuadraEsportiva quadra;
-    Locatario locatario;
+    int quadraEsportivaId;
+    int locatarioId;
     LocalDate data;
     String horaInicio;
     String horaFim;
-    public LocacaoQuadra(QuadraEsportiva quadra, Locatario locatario, LocalDate data, String horaInicio, String horaFim) {
-        if (quadra.isDisponivel() == 0) {
-            throw new IllegalArgumentException("A quadra não está disponível para locação.");
-        }
+    public LocacaoQuadra(int quadraEsportivaId, int locatarioId, LocalDate data, String horaInicio, String horaFim) {
+        //if (quadra.isDisponivel() == 0) {
+            //throw new IllegalArgumentException("A quadra não está disponível para locação.");
+        //}
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;
-        this.quadra = quadra;
-        this.locatario = locatario;
+        this.quadraEsportivaId = quadraEsportivaId;
+        this.locatarioId = locatarioId;
         this.data = data;
     }
 
@@ -50,21 +50,11 @@ public class LocacaoQuadra {
         this.id = id;
     }
 
-    public QuadraEsportiva getQuadra() {
-        return quadra;
-    }
+    public int getQuadraEsportivaId() { return quadraEsportivaId; }
+    public void setQuadraEsportivaId(int quadraEsportivaId) { this.quadraEsportivaId = quadraEsportivaId; }
 
-    public void setQuadra(QuadraEsportiva quadra) {
-        this.quadra = quadra;
-    }
-
-    public Locatario getLocatario() {
-        return locatario;
-    }
-
-    public void setLocatario(Locatario locatario) {
-        this.locatario = locatario;
-    }
+    public int getLocatarioId() { return locatarioId; }
+    public void setLocatarioId(int locatarioId) { this.locatarioId = locatarioId; }
 
     public LocalDate getData() {
         return data;
@@ -99,8 +89,6 @@ public class LocacaoQuadra {
     public String toString() {
         return "LocacaoQuadra{" +
                 "id=" + this.id +
-                "quadra=" + quadra.getId() +
-                ", locatario='" + locatario.getId() + '\'' +
                 ", data=" + data +
                 "horaInicio = " + this.horaInicio +
                 "horaFim = " + this.horaFim +
