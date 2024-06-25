@@ -13,10 +13,11 @@
         android:theme="@style/Theme.EasyScheduleMOB"
         tools:targetApi="31">
         <activity
-            android:name=".ui.home.LocadorActivity"
-            android:exported="false" />
+            android:name=".ui.home.locatario.LocatarioActivity"
+            android:exported="false"
+            android:label="@string/title_activity_locatario" />
         <activity
-            android:name=".ui.home.LocatarioActivity"
+            android:name=".ui.home.locador.LocadorActivity"
             android:exported="false" />
         <activity
             android:name=".ui.home.HomeActivity"

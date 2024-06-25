@@ -1,4 +1,4 @@
-package com.example.easyschedulemob.ui.main.login;
+package com.example.easyschedulemob.ui.login;
 
 import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;

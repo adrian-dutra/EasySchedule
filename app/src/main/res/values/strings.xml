@@ -53,4 +53,12 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="title_activity_locador">Locador</string>
+    <string name="title_quadras">Quadras</string>
+    <string name="title_locacoes">Locações</string>
+    <string name="title_notifications_locador">Notificações</string>
+    <string name="title_activity_locatario">LocatarioActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

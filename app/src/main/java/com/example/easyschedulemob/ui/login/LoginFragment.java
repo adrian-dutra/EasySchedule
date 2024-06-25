@@ -1,4 +1,4 @@
-package com.example.easyschedulemob.ui.main.login;
+package com.example.easyschedulemob.ui.login;
 
 import android.os.Bundle;
 import android.content.Intent;
@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import com.example.easyschedulemob.model.Usuario;
-import com.example.easyschedulemob.ui.home.LocadorActivity;
-import com.example.easyschedulemob.ui.home.LocatarioActivity;
+import com.example.easyschedulemob.ui.home.locador.LocadorActivity;
 
 public class LoginFragment extends Fragment {
 

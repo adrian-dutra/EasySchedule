@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_quadras">
+
+    <fragment
+        android:id="@+id/navigation_quadras"
+        android:name="com.example.easyschedulemob.ui.home.locador.menus.quadras.QuadrasFragment"
+        android:label="@string/title_quadras"
+        tools:layout="@layout/fragment_quadras" />
+
+    <fragment
+        android:id="@+id/navigation_locacoes"
+        android:name="com.example.easyschedulemob.ui.home.locador.menus.locacoes.LocacoesFragment"
+        android:label="@string/title_locacoes"
+        tools:layout="@layout/fragment_locacoes" />
+
+    <fragment
+        android:id="@+id/navigation_notifications_locador"
+        android:name="com.example.easyschedulemob.ui.home.locador.menus.notifications.LocadorNotificationsFragment"
+        android:label="@string/title_notifications_locador"
+        tools:layout="@layout/fragment_notifications_locador" />
+</navigation>
