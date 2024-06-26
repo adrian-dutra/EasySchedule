@@ -1,7 +1,6 @@
 package com.example.easyschedulemob.ui.registrar;
 
 
-
 import com.example.easyschedulemob.MainActivity;
 import com.example.easyschedulemob.R;
 import com.example.easyschedulemob.core.Util;
@@ -113,43 +112,42 @@ public class RegistrarFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
+        });
 
-            RegistrarViewModel registrarViewModel = new ViewModelProvider(this).get(RegistrarViewModel.class);
+        RegistrarViewModel registrarViewModel = new ViewModelProvider(this).get(RegistrarViewModel.class);
 
-            buttonRegister.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    String password = editTextPassword.getText().toString();
-                    String email = editTextEmail.getText().toString();
-                    String nome = editTextName.getText().toString();
-                    //Adicionar spinner aqui:
-                    String tipoUsuario = spinnerTipoUsuario.getSelectedItem().toString();
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String password = editTextPassword.getText().toString();
+                String email = editTextEmail.getText().toString();
+                String nome = editTextName.getText().toString();
+                //Adicionar spinner aqui:
+                String tipoUsuario = spinnerTipoUsuario.getSelectedItem().toString();
 
-                    ArrayList<Object> infoList = new ArrayList<>();
-                    infoList.add(password);
-                    infoList.add(email);
-                    infoList.add(nome);
-                    //infoList.add(tipoUsuario);
+                ArrayList<Object> infoList = new ArrayList<>();
+                infoList.add(password);
+                infoList.add(email);
+                infoList.add(nome);
+                //infoList.add(tipoUsuario);
 
-                    Util util = new Util();
+                Util util = new Util();
 
-                    if (util.validateInfo(infoList)) {
-                        if (util.validateEmail(email)) {
-                            usuario = new Usuario(nome, email, password, tipoUsuario);
-                            registrarViewModel.registrarUsuario(usuario, requireActivity().getApplication());
-                            Toast.makeText(getActivity(), "Usuario registrado com sucesso !", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getActivity(), MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(getActivity(), "O email está com um formato incorreto, por favor insira um email válido.", Toast.LENGTH_SHORT).show();
-                        }
+                if (util.validateInfo(infoList)) {
+                    if (util.validateEmail(email)) {
+                        usuario = new Usuario(nome, email, password, tipoUsuario);
+                        registrarViewModel.registrarUsuario(usuario, requireActivity().getApplication());
+                        Toast.makeText(getActivity(), "Usuario registrado com sucesso !", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
                     } else {
-                        Toast.makeText(getActivity(), "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "O email está com um formato incorreto, por favor insira um email válido.", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(getActivity(), "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
         return view;
     }
 }
