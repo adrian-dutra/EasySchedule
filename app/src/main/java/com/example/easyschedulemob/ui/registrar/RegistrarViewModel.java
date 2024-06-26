@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-import com.example.searchcy.Model.Repository.UserRepository;
-import com.example.searchcy.Model.Usuario;
+import com.example.easyschedulemob.model.Repository.UserRepository;
+import com.example.easyschedulemob.model.Usuario;
 
 public class RegistrarViewModel extends ViewModel {
 

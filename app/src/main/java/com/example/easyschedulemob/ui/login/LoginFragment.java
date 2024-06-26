@@ -23,6 +23,7 @@ import java.util.Objects;
 
 import com.example.easyschedulemob.model.Usuario;
 import com.example.easyschedulemob.ui.home.locador.LocadorActivity;
+import com.example.easyschedulemob.ui.home.locatario.LocatarioActivity;
 
 public class LoginFragment extends Fragment {
 

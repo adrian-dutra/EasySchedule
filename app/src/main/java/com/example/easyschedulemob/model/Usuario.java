@@ -4,21 +4,26 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public abstract class Usuario {
+public class Usuario {
     @PrimaryKey(autoGenerate = true)
-    protected int userId;
-    protected String nome;
-    protected String email;
-    protected String password;
-    protected String tipoUsuario;
+    private int userId;
+    private String nome;
+    private String email;
+    private String password;
+    private String tipoUsuario;
+    private String cpf;
+    private String cnpj;
 
-    public Usuario(String nome, String email, String password, String tipoUsuario){
+    public Usuario(String nome, String email, String password, String tipoUsuario) {
         this.nome = nome;
         this.email = email;
         this.password = password;
         this.tipoUsuario = tipoUsuario;
+        this.cpf = null;
+        this.cnpj = null;
     }
 
+    // Getters e Setters
     public int getUserId() {
         return userId;
     }
@@ -57,5 +62,21 @@ public abstract class Usuario {
 
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 }

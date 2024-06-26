@@ -30,8 +30,8 @@ public interface LocacaoQuadraDAO {
     @Query("SELECT * FROM locacoes WHERE quadraEsportivaId = :idQuadra AND data = :data AND ((horaInicio <= :horaFim AND horaFim > :horaInicio) OR (horaInicio >= :horaInicio AND horaInicio <= :horaFim))")
     LocacaoQuadra getLocacaoByHorario(int idQuadra, LocalDate data, String horaInicio, String horaFim);
 
-    @Query("SELECT * FROM locacoes WHERE locatarioId = :locatarioId")
-    List<LocacaoQuadra> getLocacoesByLocatarioId(int locatarioId);
+    @Query("SELECT * FROM locacoes WHERE userId = :userId")
+    List<LocacaoQuadra> getLocacoesByUserId(int userId);
 
     @Query("SELECT * FROM locacoes")
     List<LocacaoQuadra> getAllLocacoes();

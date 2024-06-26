@@ -10,6 +10,8 @@ import com.example.easyschedulemob.model.Usuario;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -48,6 +50,7 @@ public class RegistrarFragment extends Fragment {
     private EditText editTextCNPJ;
     private Usuario usuario;
     private Spinner spinnerTipoUsuario;
+    //private RegistrarViewModel registrarViewModel;
 
     public RegistrarFragment() {
     }
@@ -81,7 +84,7 @@ public class RegistrarFragment extends Fragment {
         editTextCPF = view.findViewById(R.id.editTextCPF);
         textViewCNPJ = view.findViewById(R.id.textViewCNPJ);
         editTextCNPJ = view.findViewById(R.id.editTextCNPJ);
-
+        spinnerTipoUsuario = view.findViewById(R.id.spinner_tipoUsuario);
         Button buttonRegister = view.findViewById(R.id.buttonRegister);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
@@ -112,32 +115,37 @@ public class RegistrarFragment extends Fragment {
             }
 
             RegistrarViewModel registrarViewModel = new ViewModelProvider(this).get(RegistrarViewModel.class);
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String password = editTextPassword.getText().toString();
-                String email = editTextEmail.getText().toString();
-                String nome = editTextName.getText().toString();
 
-                ArrayList<Object> infoList = new ArrayList<>();
-                infoList.add(password);
-                infoList.add(email);
-                infoList.add(nome);
+            buttonRegister.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    String password = editTextPassword.getText().toString();
+                    String email = editTextEmail.getText().toString();
+                    String nome = editTextName.getText().toString();
+                    //Adicionar spinner aqui:
+                    String tipoUsuario = spinnerTipoUsuario.getSelectedItem().toString();
 
-                Util util = new Util();
+                    ArrayList<Object> infoList = new ArrayList<>();
+                    infoList.add(password);
+                    infoList.add(email);
+                    infoList.add(nome);
+                    //infoList.add(tipoUsuario);
 
-                if (util.validateInfo(infoList)) {
-                    if(util.validateEmail(email) ){
-                        usuario = new Usuario(nome, email, password);
-                        registrarViewModel.registrarUsuario(usuario, requireActivity().getApplication());
-                        Toast.makeText(getActivity(), "Usuario registrado com sucesso !", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(getActivity(), "O email está com um formato incorreto, por favor insira um email válido.", Toast.LENGTH_SHORT).show();
+                    Util util = new Util();
+
+                    if (util.validateInfo(infoList)) {
+                        if (util.validateEmail(email)) {
+                            usuario = new Usuario(nome, email, password, tipoUsuario);
+                            registrarViewModel.registrarUsuario(usuario, requireActivity().getApplication());
+                            Toast.makeText(getActivity(), "Usuario registrado com sucesso !", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(getActivity(), "O email está com um formato incorreto, por favor insira um email válido.", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getActivity(), "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(getActivity(), "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -16,9 +16,9 @@ import java.time.LocalDateTime;
                         onDelete = ForeignKey.CASCADE
                 ),
                 @ForeignKey(
-                        entity = Locatario.class,
+                        entity = Usuario.class,
                         parentColumns = "id",
-                        childColumns = "locatarioId",
+                        childColumns = "userId",
                         onDelete = ForeignKey.CASCADE
                 )
         }
@@ -27,18 +27,18 @@ public class LocacaoQuadra {
     @PrimaryKey(autoGenerate = true)
     int id;
     int quadraEsportivaId;
-    int locatarioId;
+    int userId;
     LocalDate data;
     String horaInicio;
     String horaFim;
-    public LocacaoQuadra(int quadraEsportivaId, int locatarioId, LocalDate data, String horaInicio, String horaFim) {
+    public LocacaoQuadra(int quadraEsportivaId, int userId, LocalDate data, String horaInicio, String horaFim) {
         //if (quadra.isDisponivel() == 0) {
             //throw new IllegalArgumentException("A quadra não está disponível para locação.");
         //}
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;
         this.quadraEsportivaId = quadraEsportivaId;
-        this.locatarioId = locatarioId;
+        this.userId = userId;
         this.data = data;
     }
 
@@ -53,8 +53,8 @@ public class LocacaoQuadra {
     public int getQuadraEsportivaId() { return quadraEsportivaId; }
     public void setQuadraEsportivaId(int quadraEsportivaId) { this.quadraEsportivaId = quadraEsportivaId; }
 
-    public int getLocatarioId() { return locatarioId; }
-    public void setLocatarioId(int locatarioId) { this.locatarioId = locatarioId; }
+    public int getUserId() { return userId; }
+    public void setUserId(int userId) { this.userId = userId; }
 
     public LocalDate getData() {
         return data;
