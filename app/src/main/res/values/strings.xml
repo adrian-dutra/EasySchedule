@@ -61,4 +61,8 @@
     <string name="title_quadras_locatario">Quadras</string>
     <string name="title_locacoes_locatario">Locações</string>
     <string name="title_notifications">Notificações</string>
+    <string-array name="user_types">
+        <item>Locador</item>
+        <item>Locatário</item>
+    </string-array>
 </resources>
