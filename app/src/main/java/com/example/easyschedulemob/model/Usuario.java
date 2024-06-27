@@ -23,7 +23,6 @@ public class Usuario {
         this.cnpj = null;
     }
 
-    // Getters e Setters
     public int getUserId() {
         return userId;
     }

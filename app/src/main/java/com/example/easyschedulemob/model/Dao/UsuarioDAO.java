@@ -10,7 +10,7 @@ import com.example.easyschedulemob.model.Usuario;
 import java.util.List;
 @Dao
 public interface UsuarioDAO {
-    @Query("SELECT * FROM Usuario WHERE id=:idUser LIMIT 1")
+    @Query("SELECT * FROM Usuario WHERE userId=:idUser LIMIT 1")
     Usuario getUser(int idUser);
     @Query("SELECT * FROM Usuario")
     List<Usuario> getAll();

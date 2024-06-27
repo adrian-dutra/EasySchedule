@@ -21,8 +21,8 @@ public class QuadraEsportivaRepository {
         });
     }
 
-    public QuadraEsportiva buscarQuadraPorId(int id){
-        return quadraEsportivaDAO.getQuadraById(id);
+    public QuadraEsportiva buscarQuadraPorId(int quadraEsportivaId){
+        return quadraEsportivaDAO.getQuadraById(quadraEsportivaId);
     }
 
     public void atualizarQuadra(QuadraEsportiva quadra){

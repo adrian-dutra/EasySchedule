@@ -2,6 +2,7 @@ package com.example.easyschedulemob.model;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,16 +12,20 @@ import java.time.LocalDateTime;
         foreignKeys = {
                 @ForeignKey(
                         entity = QuadraEsportiva.class,
-                        parentColumns = "id",
-                        childColumns = "quadraId",
+                        parentColumns = "quadraEsportivaId",
+                        childColumns = "quadraEsportivaId",
                         onDelete = ForeignKey.CASCADE
                 ),
                 @ForeignKey(
                         entity = Usuario.class,
-                        parentColumns = "id",
+                        parentColumns = "userId",
                         childColumns = "userId",
                         onDelete = ForeignKey.CASCADE
                 )
+        },
+        indices = {
+                @Index("quadraEsportivaId"),
+                @Index("userId")
         }
 )
 public class LocacaoQuadra {

@@ -20,8 +20,8 @@ public interface QuadraEsportivaDAO {
     @Delete
     void delete(QuadraEsportiva quadra);
 
-    @Query("SELECT * FROM quadraesportiva WHERE id = :id LIMIT 1")
-    QuadraEsportiva getQuadraById(int id);
+    @Query("SELECT * FROM quadraesportiva WHERE quadraEsportivaId = :quadraEsportivaId LIMIT 1")
+    QuadraEsportiva getQuadraById(int quadraEsportivaId);
 
     @Query("SELECT * FROM quadraesportiva")
     List<QuadraEsportiva> getAllQuadras();
