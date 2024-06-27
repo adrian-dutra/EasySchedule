@@ -1,9 +1,11 @@
 package com.example.easyschedule.model.Repository;
 
 import android.app.Application;
-import com.example.easyschedulemob.core.AppDatabase;
-import com.example.easyschedulemob.model.LocacaoQuadra;
-import com.example.easyschedulemob.model.Dao.LocacaoQuadraDAO;
+
+
+import com.example.easyschedule.core.AppDatabase;
+import com.example.easyschedule.model.Dao.LocacaoQuadraDAO;
+import com.example.easyschedule.model.LocacaoQuadra;
 
 import java.time.LocalDate;
 import java.util.List;

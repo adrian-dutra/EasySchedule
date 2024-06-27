@@ -5,7 +5,8 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-import com.example.easyschedulemob.model.Usuario;
+
+import com.example.easyschedule.model.Usuario;
 
 import java.util.List;
 @Dao

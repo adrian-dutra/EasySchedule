@@ -5,7 +5,9 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-import com.example.easyschedulemob.model.LocacaoQuadra;
+
+
+import com.example.easyschedule.model.LocacaoQuadra;
 
 import java.time.LocalDate;
 import java.util.List;

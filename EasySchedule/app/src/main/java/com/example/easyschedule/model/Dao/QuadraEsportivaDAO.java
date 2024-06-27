@@ -5,7 +5,9 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-import com.example.easyschedulemob.model.QuadraEsportiva;
+
+
+import com.example.easyschedule.model.QuadraEsportiva;
 
 import java.util.List;
 

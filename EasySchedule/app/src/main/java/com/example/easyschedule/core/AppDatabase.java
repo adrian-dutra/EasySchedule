@@ -7,6 +7,12 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 
+import com.example.easyschedule.model.Dao.LocacaoQuadraDAO;
+import com.example.easyschedule.model.Dao.QuadraEsportivaDAO;
+import com.example.easyschedule.model.Dao.UsuarioDAO;
+import com.example.easyschedule.model.LocacaoQuadra;
+import com.example.easyschedule.model.QuadraEsportiva;
+import com.example.easyschedule.model.Usuario;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
