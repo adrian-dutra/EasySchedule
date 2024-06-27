@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "EasyScheduleMOB"
+rootProject.name = "EasySchedule"
 include(":app")
  
