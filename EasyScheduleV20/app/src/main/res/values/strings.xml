@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">EasyScheduleV2.0</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_locador">LocadorActivity</string>
+    <string name="title_quadra_locador">Quadras</string>
+    <string name="title_locacao_locador">Locações</string>
+    <string name="title_notifications_locador">Notificações</string>
+    <string name="title_activity_locatario">Locatario</string>
+    <string name="title_qudra_locatario">quadras</string>
+    <string name="title_locacao_quadra_locatario">Locações</string>
+    <string name="title_notifications_locatario">Notificações</string>
+    <string-array name="tipo_usuario_array">
+        <item>Locador</item>
+        <item>Locatário</item>
+    </string-array>
+</resources>
