@@ -2,6 +2,7 @@ package com.example.easyschedule.model;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,16 +12,20 @@ import java.time.LocalDateTime;
         foreignKeys = {
                 @ForeignKey(
                         entity = QuadraEsportiva.class,
-                        parentColumns = "id",
-                        childColumns = "quadraId",
+                        parentColumns = "quadraEsportivaId",
+                        childColumns = "quadraEsportivaId",
                         onDelete = ForeignKey.CASCADE
                 ),
                 @ForeignKey(
                         entity = Usuario.class,
-                        parentColumns = "id",
+                        parentColumns = "userId",
                         childColumns = "userId",
                         onDelete = ForeignKey.CASCADE
                 )
+        },
+        indices = {
+                @Index("quadraEsportivaId"),
+                @Index("userId")
         }
 )
 public class LocacaoQuadra {
@@ -33,7 +38,7 @@ public class LocacaoQuadra {
     String horaFim;
     public LocacaoQuadra(int quadraEsportivaId, int userId, LocalDate data, String horaInicio, String horaFim) {
         //if (quadra.isDisponivel() == 0) {
-            //throw new IllegalArgumentException("A quadra não está disponível para locação.");
+        //throw new IllegalArgumentException("A quadra não está disponível para locação.");
         //}
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;

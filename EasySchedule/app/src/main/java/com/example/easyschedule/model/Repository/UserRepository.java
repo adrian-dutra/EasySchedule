@@ -1,11 +1,9 @@
 package com.example.easyschedule.model.Repository;
 
 import android.app.Application;
-
-
 import com.example.easyschedule.core.AppDatabase;
-import com.example.easyschedule.model.Dao.UsuarioDAO;
 import com.example.easyschedule.model.Usuario;
+import com.example.easyschedule.model.Dao.UsuarioDAO;
 
 import java.util.List;
 

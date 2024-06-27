@@ -2,19 +2,23 @@ package com.example.easyschedule.model;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "quadraesportiva",
         foreignKeys = @ForeignKey(entity = Usuario.class,
-                parentColumns = "id",
+                parentColumns = "userId",
                 childColumns = "userId",
-                onDelete = ForeignKey.CASCADE))
+                onDelete = ForeignKey.CASCADE),
+        indices = {
+                @Index(value = {"userId"})
+        })
 public class QuadraEsportiva {
     @PrimaryKey(autoGenerate = true)
-    int id;
+    int quadraEsportivaId;
     String nome;
     String tipo;
-    Double precoPorHora;
+    double precoPorHora;
     int userId;
     int disponivel;
     public QuadraEsportiva(String nome, String tipo, double precoPorHora, int disponivel, int userId) {
@@ -25,11 +29,11 @@ public class QuadraEsportiva {
         this.userId = userId;
     }
 
-    public int getId() {
-        return id;
+    public int getQuadraEsportivaId() {
+        return quadraEsportivaId;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setQuadraEsportivaId(int quadraEsportivaId) {
+        this.quadraEsportivaId = quadraEsportivaId;
     }
     public String getNome() {
         return nome;
@@ -57,7 +61,7 @@ public class QuadraEsportiva {
 
     public int getUserId() { return userId; }
     public void setUserId(int userId) { this.userId = userId; }
-    public int isDisponivel() {
+    public int getDisponivel() {
         return disponivel;
     }
 

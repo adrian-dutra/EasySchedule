@@ -5,19 +5,21 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
-
-import com.example.easyschedule.model.Dao.LocacaoQuadraDAO;
-import com.example.easyschedule.model.Dao.QuadraEsportivaDAO;
-import com.example.easyschedule.model.Dao.UsuarioDAO;
+import com.example.easyschedule.model.Converters;
 import com.example.easyschedule.model.LocacaoQuadra;
 import com.example.easyschedule.model.QuadraEsportiva;
+import com.example.easyschedule.model.Dao.UsuarioDAO;
+import com.example.easyschedule.model.Dao.LocacaoQuadraDAO;
+import com.example.easyschedule.model.Dao.QuadraEsportivaDAO;
 import com.example.easyschedule.model.Usuario;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Usuario.class, LocacaoQuadra.class, QuadraEsportiva.class}, version = 1, exportSchema = false)
+@TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
