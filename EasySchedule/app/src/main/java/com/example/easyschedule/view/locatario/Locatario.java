@@ -1,8 +1,7 @@
-package com.example.easyschedule.view.locador;
+package com.example.easyschedule.view.locatario;
 
 import android.os.Bundle;
 
-import com.example.easyschedule.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,26 +10,26 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.easyschedule.databinding.ActivityLocadorBinding;
+import com.example.easyschedule.databinding.ActivityLocatarioBinding;
 
-public class LocadorActivity extends AppCompatActivity {
+public class Locatario extends AppCompatActivity {
 
-    private ActivityLocadorBinding binding;
+    private ActivityLocatarioBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityLocadorBinding.inflate(getLayoutInflater());
+        binding = ActivityLocatarioBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_locador, R.id.navigation_locacao_quadra_locador, R.id.navigation_notifications_locador)
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_locador);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_locatario);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }

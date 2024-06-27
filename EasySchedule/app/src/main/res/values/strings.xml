@@ -6,4 +6,8 @@
     <string name="title_quadra_locador">Quadras</string>
     <string name="title_locacao_locador">Locações</string>
     <string name="title_notifications_locador">Notificações</string>
+    <string name="title_activity_locatario">Locatario</string>
+    <string name="title_qudra_locatario">quadras</string>
+    <string name="title_locacao_quadra_locatario">Locações</string>
+    <string name="title_notifications_locatario">Notificações</string>
 </resources>

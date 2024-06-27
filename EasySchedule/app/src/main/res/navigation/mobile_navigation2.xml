@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation2"
+    app:startDestination="@+id/navigation_locatario">
+
+    <fragment
+        android:id="@+id/navigation_quadras_locatario"
+        android:name="com.example.easyschedule.view.locatario.ui.quadras.QuadrasLocatarioFragment"
+        android:label="@string/title_qudra_locatario"
+        tools:layout="@layout/fragment_quadras_locatario" />
+
+    <fragment
+        android:id="@+id/navigation_locacao_quadra_locatario"
+        android:name="com.example.easyschedule.view.locatario.ui.locacoes.LocacaoQuadraLocatarioFragment"
+        android:label="@string/title_locacao_quadra_locatario"
+        tools:layout="@layout/fragment_locacao_quadra_locatario" />
+
+    <fragment
+        android:id="@+id/navigation_notifications_locatario"
+        android:name="com.example.easyschedule.view.locatario.ui.notifications.NotificationsLocatarioFragment"
+        android:label="@string/title_notifications_locatario"
+        tools:layout="@layout/fragment_notifications_locatario" />
+</navigation>
