@@ -10,16 +10,18 @@ import androidx.room.TypeConverters;
 
 import com.example.easyschedulev20.model.Converters;
 import com.example.easyschedulev20.model.Dao.LocacaoQuadraDAO;
+import com.example.easyschedulev20.model.Dao.NotificacaoDAO;
 import com.example.easyschedulev20.model.Dao.QuadraEsportivaDAO;
 import com.example.easyschedulev20.model.Dao.UsuarioDAO;
 import com.example.easyschedulev20.model.LocacaoQuadra;
+import com.example.easyschedulev20.model.Notificacao;
 import com.example.easyschedulev20.model.QuadraEsportiva;
 import com.example.easyschedulev20.model.Usuario;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Usuario.class, LocacaoQuadra.class, QuadraEsportiva.class}, version = 1, exportSchema = false)
+@Database(entities = {Usuario.class, LocacaoQuadra.class, QuadraEsportiva.class, Notificacao.class}, version = 1, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase INSTANCE;
@@ -42,5 +44,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract UsuarioDAO usuarioDAO();
     public abstract LocacaoQuadraDAO locacaoQuadraDAO();
     public abstract QuadraEsportivaDAO quadraEsportivaDAO();
+    public abstract NotificacaoDAO notificacaoDAO();
 
 }

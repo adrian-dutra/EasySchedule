@@ -1,6 +1,10 @@
 package com.example.easyschedulev20.view.locatario;
 
 
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import androidx.core.app.NotificationCompat;
@@ -17,10 +21,15 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.easyschedulev20.R;
 import com.example.easyschedulev20.databinding.ActivityLocatarioBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.easyschedulev20.model.Notificacao;
+import com.example.easyschedulev20.model.Repository.NotificacaoRepository;
+import com.example.easyschedulev20.model.Usuario;
 
 public class LocatarioActivity extends AppCompatActivity {
 
+    private static final int PERMISSION_REQUEST_CODE = 1;
     private ActivityLocatarioBinding binding;
+    private NotificacaoRepository notificacaoRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +37,8 @@ public class LocatarioActivity extends AppCompatActivity {
 
         binding = ActivityLocatarioBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        notificacaoRepository = new NotificacaoRepository(getApplication());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
@@ -47,7 +58,13 @@ public class LocatarioActivity extends AppCompatActivity {
         notifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendNotification();
+                if (ContextCompat.checkSelfPermission(LocatarioActivity.this, android.Manifest.permission.POST_NOTIFICATIONS)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(LocatarioActivity.this,
+                            new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, PERMISSION_REQUEST_CODE);
+                } else {
+                    sendNotificationAndSaveToDatabase();
+                }
             }
         });
     }
@@ -66,7 +83,8 @@ public class LocatarioActivity extends AppCompatActivity {
         }
     }
 
-    private void sendNotification() {
+    @SuppressLint("MissingPermission")
+    private void sendNotificationAndSaveToDatabase() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "locatario_channel_id")
                 .setSmallIcon(R.drawable.notification_icon)
                 .setContentTitle("Locatário")
@@ -76,6 +94,9 @@ public class LocatarioActivity extends AppCompatActivity {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         int notificationId = 1;
         notificationManager.notify(notificationId, builder.build());
+
+        //Notificacao notificacao = new Notificacao("Locatário", "Quadra locada",  );
+        //notificacaoRepository.insert(notificacao);
     }
 
 }

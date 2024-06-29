@@ -1,4 +1,4 @@
-package com.example.easyschedule.view.locatario.ui.notifications;
+package com.example.easyschedulev20.view.locatario.ui.notifications;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

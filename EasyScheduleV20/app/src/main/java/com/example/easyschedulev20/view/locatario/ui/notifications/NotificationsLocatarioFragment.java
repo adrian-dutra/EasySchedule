@@ -19,8 +19,8 @@ public class NotificationsLocatarioFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        com.example.easyschedule.view.locatario.ui.notifications.NotificationsLocatarioViewModel notificationsLocatarioViewModel =
-                new ViewModelProvider(this).get(com.example.easyschedule.view.locatario.ui.notifications.NotificationsLocatarioViewModel.class);
+        com.example.easyschedulev20.view.locatario.ui.notifications.NotificationsLocatarioViewModel notificationsLocatarioViewModel =
+                new ViewModelProvider(this).get(com.example.easyschedulev20.view.locatario.ui.notifications.NotificationsLocatarioViewModel.class);
 
         binding = FragmentNotificationsLocatarioBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

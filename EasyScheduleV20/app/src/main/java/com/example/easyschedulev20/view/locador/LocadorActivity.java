@@ -1,11 +1,15 @@
 package com.example.easyschedulev20.view.locador;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -19,6 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LocadorActivity extends AppCompatActivity {
 
+    private static final int PERMISSION_REQUEST_CODE = 1;
     private ActivityLocadorBinding binding;
 
     @Override
@@ -43,7 +48,13 @@ public class LocadorActivity extends AppCompatActivity {
         notifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendNotification();
+                if (ContextCompat.checkSelfPermission(LocadorActivity.this, android.Manifest.permission.POST_NOTIFICATIONS)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(LocadorActivity.this,
+                            new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, PERMISSION_REQUEST_CODE);
+                } else {
+                    sendNotification();
+                }
             }
         });
 
@@ -63,6 +74,7 @@ public class LocadorActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private void sendNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "locador_channel_id")
                 .setSmallIcon(R.drawable.notification_icon)
