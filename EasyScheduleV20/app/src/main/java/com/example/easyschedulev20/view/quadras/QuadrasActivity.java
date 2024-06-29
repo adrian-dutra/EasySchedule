@@ -10,10 +10,16 @@ public class QuadrasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quadras);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, QuadrasFragment.newInstance())
-                    .commitNow();
-        }
+        int userId = getIntent().getIntExtra("userId", 0);
+
+        QuadrasFragment quadrasFragment = QuadrasFragment.newInstance();
+        Bundle bundle = new Bundle();
+        bundle.putInt("userId", userId);
+        quadrasFragment.setArguments(bundle);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, quadrasFragment)
+                .commit();
     }
+
 }

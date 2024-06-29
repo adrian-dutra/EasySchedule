@@ -64,15 +64,15 @@
 
     <Spinner
         android:id="@+id/spinner_status_quadra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="382dp"
+        android:layout_height="38dp"
         android:layout_marginTop="5dp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonRegister"
+        android:id="@+id/button_save_quadra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/background_button"
         android:text="salvar" />
 </LinearLayout>

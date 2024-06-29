@@ -25,7 +25,7 @@ public class QuadraEsportiva {
         this.nome = nome;
         this.tipo = tipo;
         this.precoPorHora = precoPorHora;
-        this.disponivel = 1;
+        this.disponivel = disponivel;
         this.userId = userId;
     }
 
