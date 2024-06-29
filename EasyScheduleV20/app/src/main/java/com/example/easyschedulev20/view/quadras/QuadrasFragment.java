@@ -1,6 +1,8 @@
 package com.example.easyschedulev20.view.quadras;
 
 import androidx.lifecycle.ViewModelProvider;
+
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.easyschedulev20.R;
 import com.example.easyschedulev20.core.Util;
+import com.example.easyschedulev20.view.locador.LocadorActivity;
 import com.example.easyschedulev20.model.QuadraEsportiva;
 
 import java.util.ArrayList;
@@ -38,7 +41,7 @@ public class QuadrasFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        quadrasViewModel = new QuadrasViewModel();
+        quadrasViewModel = new ViewModelProvider(requireActivity()).get(QuadrasViewModel.class);
         return inflater.inflate(R.layout.fragment_quadras, container, false);
     }
 
@@ -86,7 +89,6 @@ public class QuadrasFragment extends Fragment {
 
                     QuadraEsportiva quadra = new QuadraEsportiva(nome, tipo, preco, status, userId);
                     quadrasViewModel.registrarQuadra(quadra, requireActivity().getApplication());
-
                 }else{
                     Toast.makeText(getActivity(), "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
                 }

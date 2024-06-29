@@ -6,6 +6,7 @@ import android.app.Application;
 import com.example.easyschedulev20.core.AppDatabase;
 import com.example.easyschedulev20.model.Dao.QuadraEsportivaDAO;
 import com.example.easyschedulev20.model.QuadraEsportiva;
+import com.example.easyschedulev20.view.locador.LocadorActivity;
 
 import java.util.List;
 
@@ -41,5 +42,8 @@ public class QuadraEsportivaRepository {
 
     public List<QuadraEsportiva> listarTodasAsQuadras(){
         return quadraEsportivaDAO.getAllQuadras();
+    }
+
+    public void observe(LocadorActivity locadorActivity, Object o) {
     }
 }

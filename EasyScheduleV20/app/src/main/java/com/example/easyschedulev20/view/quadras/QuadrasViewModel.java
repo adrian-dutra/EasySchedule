@@ -15,6 +15,10 @@ public class QuadrasViewModel extends ViewModel {
 
     }
 
+    public QuadraEsportivaRepository getQuadrasRepository() {
+        return quadrasRepository;
+    }
+
     public void registrarQuadra(QuadraEsportiva quadra, Application context){
         quadrasRepository = new QuadraEsportivaRepository(context);
         quadrasRepository.inserirQuadra(quadra);
