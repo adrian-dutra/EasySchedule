@@ -1,6 +1,10 @@
 package com.example.easyschedulev20.view.locatario;
 
 
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import androidx.core.app.NotificationCompat;
@@ -16,11 +20,17 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.easyschedulev20.R;
 import com.example.easyschedulev20.databinding.ActivityLocatarioBinding;
+import com.example.easyschedulev20.view.locador.LocadorActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.easyschedulev20.model.Notificacao;
+import com.example.easyschedulev20.model.Repository.NotificacaoRepository;
+import com.example.easyschedulev20.model.Usuario;
 
 public class LocatarioActivity extends AppCompatActivity {
 
+    private static final int PERMISSION_REQUEST_CODE = 1;
     private ActivityLocatarioBinding binding;
+    private NotificacaoRepository notificacaoRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +41,10 @@ public class LocatarioActivity extends AppCompatActivity {
 
         int userId = getIntent().getIntExtra("usuarioId", 0);
 
+        notificacaoRepository = new NotificacaoRepository(getApplication());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
-        // Configurando o NavController e o AppBarConfiguration
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_locatario);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_quadras_locatario,
@@ -42,7 +52,6 @@ public class LocatarioActivity extends AppCompatActivity {
                 R.id.navigation_notifications_locatario)
                 .build();
 
-        // Vinculando o NavController ao BottomNavigationView
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
@@ -55,7 +64,13 @@ public class LocatarioActivity extends AppCompatActivity {
         notifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendNotification();
+                if (ContextCompat.checkSelfPermission(LocatarioActivity.this, android.Manifest.permission.POST_NOTIFICATIONS)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(LocatarioActivity.this,
+                            new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, PERMISSION_REQUEST_CODE);
+                } else {
+                    sendNotificationAndSaveToDatabase();
+                }
             }
         });
     }
@@ -74,7 +89,14 @@ public class LocatarioActivity extends AppCompatActivity {
         }
     }
 
-    private void sendNotification() {
+    @SuppressLint("MissingPermission")
+    private void sendNotificationAndSaveToDatabase() {
+        createNotificationChannel();
+        int userId = getCurrentUserId();
+
+        Notificacao notificacao = new Notificacao("Locatário", "Quadra locada", "locatario", userId );
+        notificacaoRepository.insert(notificacao);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "locatario_channel_id")
                 .setSmallIcon(R.drawable.notification_icon)
                 .setContentTitle("Locatário")
@@ -84,6 +106,12 @@ public class LocatarioActivity extends AppCompatActivity {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         int notificationId = 1;
         notificationManager.notify(notificationId, builder.build());
+
+    }
+
+    private int getCurrentUserId() {
+        LocatarioActivity userViewModel = this;
+        return userViewModel.getCurrentUserId();
     }
 
 }

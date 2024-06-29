@@ -1,11 +1,16 @@
 package com.example.easyschedulev20.view.locador;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -16,10 +21,15 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.easyschedulev20.R;
 import com.example.easyschedulev20.databinding.ActivityLocadorBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.easyschedulev20.model.Notificacao;
+import com.example.easyschedulev20.model.Repository.NotificacaoRepository;
 
 public class LocadorActivity extends AppCompatActivity {
 
+    private static final int PERMISSION_REQUEST_CODE = 1;
     private ActivityLocadorBinding binding;
+    private NotificacaoRepository notificacaoRepository;
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +38,9 @@ public class LocadorActivity extends AppCompatActivity {
         binding = ActivityLocadorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        int userId = getIntent().getIntExtra("usuarioId", 0);
+        userId = getIntent().getIntExtra("usuarioId", 0);
+
+        notificacaoRepository = new NotificacaoRepository(getApplication());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -45,7 +57,13 @@ public class LocadorActivity extends AppCompatActivity {
         notifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendNotification();
+                if (ContextCompat.checkSelfPermission(LocadorActivity.this, Manifest.permission.POST_NOTIFICATIONS)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(LocadorActivity.this,
+                            new String[]{Manifest.permission.POST_NOTIFICATIONS}, PERMISSION_REQUEST_CODE);
+                } else {
+                    sendNotificationAndSaveToDatabase();
+                }
             }
         });
 
@@ -68,7 +86,14 @@ public class LocadorActivity extends AppCompatActivity {
         }
     }
 
-    private void sendNotification() {
+    @SuppressLint("MissingPermission")
+    private void sendNotificationAndSaveToDatabase() {
+
+        createNotificationChannel();
+
+        Notificacao notificacao = new Notificacao("Locador", "Quadra adicionada", "locador", userId);
+        notificacaoRepository.insert(notificacao);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "locador_channel_id")
                 .setSmallIcon(R.drawable.notification_icon)
                 .setContentTitle("Locador")
@@ -78,5 +103,8 @@ public class LocadorActivity extends AppCompatActivity {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         int notificationId = 1;
         notificationManager.notify(notificationId, builder.build());
+    }
+    private int getCurrentUserId() {
+        return userId;
     }
 }
