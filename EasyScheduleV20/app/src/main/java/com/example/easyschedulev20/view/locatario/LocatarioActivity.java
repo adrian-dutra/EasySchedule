@@ -29,6 +29,9 @@ public class LocatarioActivity extends AppCompatActivity {
         binding = ActivityLocatarioBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        int userId = getIntent().getIntExtra("usuarioId", 0);
+
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
         // Configurando o NavController e o AppBarConfiguration
@@ -42,6 +45,11 @@ public class LocatarioActivity extends AppCompatActivity {
         // Vinculando o NavController ao BottomNavigationView
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        // Passar o userId para o fragmento inicial
+        Bundle bundle = new Bundle();
+        bundle.putInt("usuarioId", userId);
+        navController.navigate(R.id.navigation_quadras_locatario, bundle);
 
         Button notifyButton = findViewById(R.id.notify_button);
         notifyButton.setOnClickListener(new View.OnClickListener() {

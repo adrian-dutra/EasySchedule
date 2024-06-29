@@ -30,3 +30,5 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
 </navigation>
+
+

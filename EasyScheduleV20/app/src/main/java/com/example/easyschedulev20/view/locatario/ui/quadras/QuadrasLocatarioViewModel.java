@@ -1,19 +1,27 @@
 package com.example.easyschedulev20.view.locatario.ui.quadras;
 
+import android.app.Application;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.easyschedulev20.model.QuadraEsportiva;
+import com.example.easyschedulev20.model.Repository.QuadraEsportivaRepository;
+
+import java.util.List;
+
 public class QuadrasLocatarioViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private QuadraEsportivaRepository quadraEsportivaRepository;
 
     public QuadrasLocatarioViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public List<QuadraEsportiva> listarQuadras(Application context){
+        quadraEsportivaRepository = new QuadraEsportivaRepository(context);
+        return quadraEsportivaRepository.listarTodasAsQuadras();
     }
+
 }

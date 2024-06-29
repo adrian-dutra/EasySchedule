@@ -49,7 +49,6 @@ public class LocadorActivity extends AppCompatActivity {
             }
         });
 
-        // Passar o userId para o fragmento inicial
         Bundle bundle = new Bundle();
         bundle.putInt("usuarioId", userId);
         navController.navigate(R.id.navigation_locador, bundle);

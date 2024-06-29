@@ -5,6 +5,8 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "quadraesportiva",
         foreignKeys = @ForeignKey(entity = Usuario.class,
                 parentColumns = "userId",
@@ -13,7 +15,7 @@ import androidx.room.PrimaryKey;
         indices = {
                 @Index(value = {"userId"})
         })
-public class QuadraEsportiva {
+public class QuadraEsportiva implements Serializable {
     @PrimaryKey(autoGenerate = true)
     int quadraEsportivaId;
     String nome;
