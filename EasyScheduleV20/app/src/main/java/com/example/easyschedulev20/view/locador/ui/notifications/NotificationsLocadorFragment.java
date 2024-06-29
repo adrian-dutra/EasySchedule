@@ -25,8 +25,8 @@ public class NotificationsLocadorFragment extends Fragment {
         binding = FragmentNotificationsLocadorBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textNotifications;
-        notificationsLocadorViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        //final TextView textView = binding.textNotifications;
+        //notificationsLocadorViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

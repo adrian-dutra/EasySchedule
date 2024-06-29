@@ -21,7 +21,7 @@ import com.example.easyschedulev20.model.Usuario;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Usuario.class, LocacaoQuadra.class, QuadraEsportiva.class, Notificacao.class}, version = 1, exportSchema = false)
+@Database(entities = {Usuario.class, LocacaoQuadra.class, QuadraEsportiva.class, Notificacao.class}, version = 2, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase INSTANCE;
@@ -33,7 +33,7 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    AppDatabase.class, "UserRepository") .allowMainThreadQueries()
+                                    AppDatabase.class, "UserRepository") .fallbackToDestructiveMigration().allowMainThreadQueries()
                             .build();
                 }
             }
