@@ -39,7 +39,7 @@ public class QuadrasLocadorFragment extends Fragment {
             userId = getArguments().getInt("userId", 0);
         }
 
-        Log.d("warning", "AQUIIIIIIIIIIIIII~!!!!!!! " + userId);
+        Log.d("warning", "LOCADOOOOOOOR 2!!!!!!! " + userId);
         listView = binding.listViewQuadrasLocador;
 
         List<QuadraEsportiva> quadras = quadrasLocadorViewModel.listarQuadras(requireActivity().getApplication());

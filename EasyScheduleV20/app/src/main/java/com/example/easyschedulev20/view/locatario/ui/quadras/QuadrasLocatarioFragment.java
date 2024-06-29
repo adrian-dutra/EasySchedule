@@ -2,6 +2,7 @@ package com.example.easyschedulev20.view.locatario.ui.quadras;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ public class QuadrasLocatarioFragment extends Fragment {
             userId = getArguments().getInt("userId", 0);
         }
 
+        Log.i("WARNIGN", "LOCATAAAAAAARIOOOOOO2: " + userId);
 
         List<QuadraEsportiva> quadras = quadrasLocatarioViewModel.listarQuadras(requireActivity().getApplication());
         List<String> nomesQuadras = new ArrayList<>();
@@ -58,8 +60,9 @@ public class QuadrasLocatarioFragment extends Fragment {
         listView_locacoes_locatario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                QuadraEsportiva quadraSelecionada = quadras.get(position);
                 Intent intent = new Intent(getActivity(), LocacaoQuadraActivity.class);
-                intent.putExtra("userId", userId);
+                intent.putExtra("quadraSelecionada", quadraSelecionada);
                 startActivity(intent);
             }
         });

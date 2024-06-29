@@ -21,7 +21,7 @@ import com.example.easyschedulev20.model.Usuario;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Usuario.class, LocacaoQuadra.class, QuadraEsportiva.class, Notificacao.class}, version = 2, exportSchema = false)
+@Database(entities = {Usuario.class, LocacaoQuadra.class, QuadraEsportiva.class, Notificacao.class}, version = 3, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase INSTANCE;

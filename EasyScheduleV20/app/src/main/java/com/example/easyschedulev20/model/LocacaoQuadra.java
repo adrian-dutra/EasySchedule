@@ -33,18 +33,13 @@ public class LocacaoQuadra {
     int id;
     int quadraEsportivaId;
     int userId;
-    LocalDate data;
     String horaInicio;
     String horaFim;
-    public LocacaoQuadra(int quadraEsportivaId, int userId, LocalDate data, String horaInicio, String horaFim) {
-        //if (quadra.isDisponivel() == 0) {
-        //throw new IllegalArgumentException("A quadra não está disponível para locação.");
-        //}
+    public LocacaoQuadra(int quadraEsportivaId, int userId, String horaInicio, String horaFim) {
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;
         this.quadraEsportivaId = quadraEsportivaId;
         this.userId = userId;
-        this.data = data;
     }
 
     public int getId() {
@@ -60,19 +55,6 @@ public class LocacaoQuadra {
 
     public int getUserId() { return userId; }
     public void setUserId(int userId) { this.userId = userId; }
-
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-
-    /*public double calcularValor() {
-        long horas = java.time.Duration.between(horaInicio, horaFim).toHours();
-        return horas * quadra.getPrecoPorHora();
-    }*/
 
     public String getHoraFim() {
         return horaFim;
@@ -94,7 +76,6 @@ public class LocacaoQuadra {
     public String toString() {
         return "LocacaoQuadra{" +
                 "id=" + this.id +
-                ", data=" + data +
                 "horaInicio = " + this.horaInicio +
                 "horaFim = " + this.horaFim +
                 '}';

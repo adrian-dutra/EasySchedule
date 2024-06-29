@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".view.locatario.ui.locacoes.LocacaoQuadraLocatarioFragment">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton_locacoes_locatario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="328dp"
-        android:layout_marginTop="4dp"
-        android:clickable="true"
-        android:src="@drawable/ic_plus"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView_locacoes_locatario" />
-
     <ListView
         android:id="@+id/listView_locacoes_locatario"
         android:layout_width="361dp"

@@ -32,8 +32,8 @@ public class LocacaoQuadraRepository {
         return locacaoQuadraDAO.getLocacoesByQuadraId(quadraId);
     }
 
-    public LocacaoQuadra buscarPorHorario(int idQuadra, LocalDate data, String horaInicio, String horaFim){
-        return locacaoQuadraDAO.getLocacaoByHorario(idQuadra, data, horaInicio, horaFim);
+    public LocacaoQuadra buscarPorHorario(int idQuadra, String horaInicio, String horaFim){
+        return locacaoQuadraDAO.getLocacaoByHorario(idQuadra, horaInicio, horaFim);
     }
 
     public List<LocacaoQuadra> buscarLocacoesPorLocatario(int userId){

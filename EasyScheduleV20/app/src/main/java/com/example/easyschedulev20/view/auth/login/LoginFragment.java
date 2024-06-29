@@ -81,7 +81,7 @@ public class LoginFragment extends Fragment {
                                 Toast.makeText(getActivity(), "Tipo de usuário desconhecido.", Toast.LENGTH_SHORT).show();
                                 return;
                             }
-                            intent.putExtra("usuarioId", usuario.getUserId());
+                            intent.putExtra("userId", usuario.getUserId());
                             startActivity(intent);
                             requireActivity().finish();
                         } else {

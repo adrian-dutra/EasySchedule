@@ -19,8 +19,8 @@ public class LocacaoQuadraLocadorFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        com.example.easyschedule.view.locador.ui.locacao.LocacaoQuadraLocadorViewModel locacaoQuadraLocadorViewModel =
-                new ViewModelProvider(this).get(com.example.easyschedule.view.locador.ui.locacao.LocacaoQuadraLocadorViewModel.class);
+        LocacaoQuadraLocadorViewModel locacaoQuadraLocadorViewModel =
+                new ViewModelProvider(requireActivity()).get(LocacaoQuadraLocadorViewModel.class);
 
         binding = FragmentLocacaoQuadraLocadorBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

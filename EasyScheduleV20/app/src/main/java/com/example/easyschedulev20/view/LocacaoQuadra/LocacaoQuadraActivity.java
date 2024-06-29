@@ -19,6 +19,7 @@ public class LocacaoQuadraActivity extends AppCompatActivity {
         bundle.putSerializable("quadraSelecionada", quadra);
         locacaoQuadraFragment.setArguments(bundle);
 
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container_locacao, locacaoQuadraFragment)
                 .commit();

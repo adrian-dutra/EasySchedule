@@ -7,6 +7,7 @@ import android.app.NotificationManager;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import androidx.core.app.ActivityCompat;
@@ -30,15 +31,13 @@ public class LocadorActivity extends AppCompatActivity {
     private ActivityLocadorBinding binding;
     private NotificacaoRepository notificacaoRepository;
     private int userId;
-
+    private  int idUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityLocadorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        userId = getIntent().getIntExtra("usuarioId", 0);
 
         notificacaoRepository = new NotificacaoRepository(getApplication());
 
@@ -50,6 +49,11 @@ public class LocadorActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_locador);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        userId = getIntent().getIntExtra("userId", 0);
+        Bundle bundle = new Bundle();
+        bundle.putInt("userId", userId);
+        navController.navigate(R.id.navigation_locador, bundle);
 
         createNotificationChannel();
 
@@ -67,9 +71,6 @@ public class LocadorActivity extends AppCompatActivity {
             }
         });
 
-        Bundle bundle = new Bundle();
-        bundle.putInt("usuarioId", userId);
-        navController.navigate(R.id.navigation_locador, bundle);
     }
 
     private void createNotificationChannel() {

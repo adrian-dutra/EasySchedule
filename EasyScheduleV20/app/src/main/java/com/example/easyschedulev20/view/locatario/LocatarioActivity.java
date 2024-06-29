@@ -57,7 +57,7 @@ public class LocatarioActivity extends AppCompatActivity {
 
         // Passar o userId para o fragmento inicial
         Bundle bundle = new Bundle();
-        bundle.putInt("usuarioId", userId);
+        bundle.putInt("userId", userId);
         navController.navigate(R.id.navigation_quadras_locatario, bundle);
 
         Button notifyButton = findViewById(R.id.notify_button);
