@@ -43,6 +43,7 @@
             android:label="Locador" >
             <!-- Adicionado LocadorActivity -->
         </activity>
+        <activity android:name=".view.quadras.QuadrasActivity" />
 
     </application>
 

@@ -33,6 +33,8 @@ public class LocadorActivity extends AppCompatActivity {
         binding = ActivityLocadorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        int userId = getIntent().getIntExtra("usuarioId", 0);
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_locador, R.id.navigation_locacao_quadra_locador, R.id.navigation_notifications_locador)
@@ -58,6 +60,10 @@ public class LocadorActivity extends AppCompatActivity {
             }
         });
 
+        // Passar o userId para o fragmento inicial
+        Bundle bundle = new Bundle();
+        bundle.putInt("usuarioId", userId);
+        navController.navigate(R.id.navigation_locador, bundle);
     }
 
     private void createNotificationChannel() {
@@ -86,5 +92,4 @@ public class LocadorActivity extends AppCompatActivity {
         int notificationId = 1;
         notificationManager.notify(notificationId, builder.build());
     }
-
 }

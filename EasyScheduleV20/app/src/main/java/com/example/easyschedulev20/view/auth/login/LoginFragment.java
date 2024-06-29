@@ -69,7 +69,7 @@ public class LoginFragment extends Fragment {
                     if(util.validateEmail(email)) {
                         usuario = vmLogin.listarUsuarioPeloEmail(email, requireActivity().getApplication());
 
-                        if(usuario != null && Objects.equals(usuario.getEmail(), email) && Objects.equals(usuario.getPassword(), password)) {
+                        if (usuario != null && Objects.equals(usuario.getEmail(), email) && Objects.equals(usuario.getPassword(), password)) {
                             Toast.makeText(getActivity(), "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
 
                             Intent intent;
@@ -81,12 +81,13 @@ public class LoginFragment extends Fragment {
                                 Toast.makeText(getActivity(), "Tipo de usuário desconhecido.", Toast.LENGTH_SHORT).show();
                                 return;
                             }
-
+                            intent.putExtra("usuarioId", usuario.getUserId());
                             startActivity(intent);
                             requireActivity().finish();
                         } else {
                             Toast.makeText(getActivity(), "As credenciais estão incorretas", Toast.LENGTH_SHORT).show();
                         }
+
                     } else {
                         Toast.makeText(getActivity(), "O email está com um formato incorreto, por favor insira um email válido.", Toast.LENGTH_SHORT).show();
                     }
