@@ -20,6 +20,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.easyschedulev20.R;
 import com.example.easyschedulev20.databinding.ActivityLocatarioBinding;
+import com.example.easyschedulev20.view.locador.LocadorActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.easyschedulev20.model.Notificacao;
 import com.example.easyschedulev20.model.Repository.NotificacaoRepository;
@@ -42,7 +43,6 @@ public class LocatarioActivity extends AppCompatActivity {
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
-        // Configurando o NavController e o AppBarConfiguration
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_locatario);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_quadras_locatario,
@@ -50,7 +50,6 @@ public class LocatarioActivity extends AppCompatActivity {
                 R.id.navigation_notifications_locatario)
                 .build();
 
-        // Vinculando o NavController ao BottomNavigationView
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
@@ -85,6 +84,12 @@ public class LocatarioActivity extends AppCompatActivity {
 
     @SuppressLint("MissingPermission")
     private void sendNotificationAndSaveToDatabase() {
+        createNotificationChannel();
+        int userId = getCurrentUserId();
+
+        Notificacao notificacao = new Notificacao("Locatário", "Quadra locada", "locatario", userId );
+        notificacaoRepository.insert(notificacao);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "locatario_channel_id")
                 .setSmallIcon(R.drawable.notification_icon)
                 .setContentTitle("Locatário")
@@ -95,8 +100,11 @@ public class LocatarioActivity extends AppCompatActivity {
         int notificationId = 1;
         notificationManager.notify(notificationId, builder.build());
 
-        //Notificacao notificacao = new Notificacao("Locatário", "Quadra locada",  );
-        //notificacaoRepository.insert(notificacao);
+    }
+
+    private int getCurrentUserId() {
+        LocatarioActivity userViewModel = this;
+        return userViewModel.getCurrentUserId();
     }
 
 }

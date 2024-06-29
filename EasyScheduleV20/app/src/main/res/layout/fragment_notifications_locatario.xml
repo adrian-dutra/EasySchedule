@@ -7,6 +7,7 @@
     tools:context=".view.locatario.ui.notifications.NotificationsLocatarioFragment">
 
     <ListView
+        android:id="@+id/list_notifica_loacatario"
         android:layout_width="403dp"
         android:layout_height="564dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_limpar"

@@ -24,8 +24,8 @@ public class NotificacaoRepository {
         });
     }
 
-    public LiveData<List<Notificacao>> getAllNotificacoesByUserId(int userId) {
-        return (LiveData<List<Notificacao>>) notificacaoDAO.getNotificacoesByUserId(userId);
+    public List<Notificacao> getAllNotificacoesByUserId(int userId) {
+        return (List<Notificacao>) notificacaoDAO.getNotificacoesByUserId(userId);
     }
 
     public void delete(Notificacao notificacao) {
